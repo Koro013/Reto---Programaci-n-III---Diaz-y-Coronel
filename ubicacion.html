@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonidos de la Ciudad - Ubicación</title>
+    <link rel="icon" type="image/png" href="./images/guitarra.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1 id="titulo"><i hidden>Festival</i> Sonidos de la Ciudad</h1>
+      <button id="alternarMenu" class="alternar-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+          </li>
+          <li>
+            <a href="artistas.html"
+              ><i class="fa-solid fa-music"></i> Artistas</a
+            >
+          </li>
+          <li>
+            <a href="cronograma.html"
+              ><i class="fa-solid fa-clock"></i> Cronograma</a
+            >
+          </li>
+          <li>
+            <a href="entradas.html"
+              ><i class="fa-solid fa-ticket"></i> Entradas</a
+            >
+          </li>
+          <li>
+            <a href="ubicacion.html"
+              ><i class="fa-solid fa-location-dot"></i> Ubicación</a
+            >
+          </li>
+          <li>
+            <a href="contacto.html"
+              ><i class="fa-solid fa-address-book"></i> Contacto</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main
+      id="main-grid"
+    >
+      <section
+        class="card"
+        id="como-llegar"
+      >
+        <h2>Cómo Llegar</h2>
+        <p>
+          El festival se realizará en <strong>La Plaza Libertad</strong>, en el
+          corazón de la ciudad.
+        </p>
+      </section>
+
+      <section
+        class="card"
+        id="mapa-ubicacion"
+      >
+        <h3>Ubicación en Google Maps</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3470.923455246755!2d-64.26620572458765!3d-27.7876878341604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x943b52d9a3b2b801%3A0x6b4c1a2f0b7c8e0e!2sPlaza%20Libertad!5e0!3m2!1ses-419!2sar!4v1718507548777!5m2!1ses-419!2sar"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
+
+      <section
+        class="card"
+        id="trailer-festival"
+      >
+        <h3>Tráiler del Festival</h3>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/7ofsgFyIO7Q?si=SVL_uMc5OAcRBS6n"
+          title="YouTube video player"
+          frameborder="0"
+          style="width: 67rem; height: 27rem"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </section>
+
+      <section
+        class="card"
+        id="redes-sociales"
+      >
+        <h3>Redes Sociales</h3>
+        <iframe
+          src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/festivalchacarera"
+          width="600"
+          height="200"
+          style="border: none; overflow: hidde"
+          scrolling="no"
+          frameborder="0"
+          allow="encrypted-media"
+        >
+        </iframe>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Sonidos de la Ciudad</p>
+      <p>
+        ¿Dudas? Escríbenos a
+        <a href="mailto:info@sonidosdelaciudad.com"
+          >info@sonidosdelaciudad.com</a
+        >
+      </p>
+    </footer>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

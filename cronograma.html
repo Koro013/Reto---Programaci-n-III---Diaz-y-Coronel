@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonidos de la Ciudad - Cronograma</title>
+    <link rel="icon" type="image/png" href="./images/guitarra.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1 id="titulo"><i hidden>Festival</i> Sonidos de la Ciudad</h1>
+      <button id="alternarMenu" class="alternar-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+          </li>
+          <li>
+            <a href="artistas.html"
+              ><i class="fa-solid fa-music"></i> Artistas</a
+            >
+          </li>
+          <li>
+            <a href="cronograma.html"
+              ><i class="fa-solid fa-clock"></i> Cronograma</a
+            >
+          </li>
+          <li>
+            <a href="entradas.html"
+              ><i class="fa-solid fa-ticket"></i> Entradas</a
+            >
+          </li>
+          <li>
+            <a href="ubicacion.html"
+              ><i class="fa-solid fa-location-dot"></i> Ubicación</a
+            >
+          </li>
+          <li>
+            <a href="contacto.html"
+              ><i class="fa-solid fa-address-book"></i> Contacto</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Cronograma de Actuaciones</h2>
+        <ol>
+          <li>
+            <strong>Viernes 20 de Agosto</strong>
+            <ul>
+              <li>
+                <strong>18:00</strong>
+                <ul>
+                  <li>Victor Navarro</li>
+                </ul>
+              </li>
+              <li>
+                <strong>20:00</strong>
+                <ul>
+                  <li>Mavi Diaz y las Folkies</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Sábado 21 de Agosto</strong>
+            <ul>
+              <li>
+                <strong>17:00</strong>
+                <ul>
+                  <li>Marcelo Gomez</li>
+                </ul>
+              </li>
+              <li>
+                <strong>20:00</strong>
+                <ul>
+                  <li>Victor Navarro (Reprise)</li>
+                </ul>
+              </li>
+              <li>
+                <strong>22:00</strong>
+                <ul>
+                  <li>Marcos Barrionuevo</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Domingo 22 de Agosto</strong>
+            <ul>
+              <li>
+                <strong>17:00</strong>
+                <ul>
+                  <li>Mavi Diaz y las Folkies (Especial)</li>
+                </ul>
+              </li>
+              <li>
+                <strong>19:00</strong>
+                <ul>
+                  <li>Los del Vinalar</li>
+                </ul>
+              </li>
+              <li>
+                <strong>22:00</strong>
+                <ul>
+                  <li>Las Mullieris</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="card">
+        <h2>Resumen por Escenario</h2>
+        <table>
+          <caption>
+            <strong>Viernes 20 de Agosto</strong>
+          </caption>
+          <thead>
+            <tr>
+              <th>Escenario</th>
+              <th>Actuaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Escenario">Principal</td>
+              <td data-label="Actuaciones">Mavi Diaz y las Folkies</td>
+            </tr>
+            <tr>
+              <td data-label="Escenario">Secundario</td>
+              <td data-label="Actuaciones">Victor Navarro</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br /><br />
+
+        <table>
+          <caption>
+            <strong>Sábado 21 de Agosto</strong>
+          </caption>
+          <thead>
+            <tr>
+              <th>Escenario</th>
+              <th>Actuaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Escenario">Principal</td>
+              <td data-label="Actuaciones">
+                Marcelo Gomez - Marcos Barrionuevo
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Escenario">Secundario</td>
+              <td data-label="Actuaciones">Victor Navarro</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br /><br />
+
+        <table>
+          <caption>
+            <strong>Domingo 22 de Agosto</strong>
+          </caption>
+          <thead>
+            <tr>
+              <th>Escenario</th>
+              <th>Actuaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Escenario">Principal</td>
+              <td data-label="Actuaciones">
+                Mavi Diaz y las Folkies - Las Mullieris
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Escenario">Secundario</td>
+              <td data-label="Actuaciones">Los del Vinalar</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Sonidos de la Ciudad</p>
+      <p>
+        ¿Dudas? Escríbenos a
+        <a href="mailto:info@sonidosdelaciudad.com"
+          >info@sonidosdelaciudad.com</a
+        >
+      </p>
+    </footer>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

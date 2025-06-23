@@ -1,0 +1,987 @@
+/* Selectores universales y reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables CSS para la paleta de colores */
+:root {
+    --primary-color: #04a972;
+    /* Un verde vibrante */
+    --secondary-color: #FFC107;
+    /* Amarillo para acentos */
+    --tertiary-color: #3f51b5;
+    /* Azul para subtítulos */
+    --text-color: #333;
+    /* Texto oscuro */
+    --light-text-color: #f8f8f8;
+    /* Texto claro */
+    --background-color: #f4f4f4;
+    /* Fondo claro general */
+    --header-footer-bg: #212121;
+    /* Fondo oscuro para header/footer */
+    --card-bg-color: #ffffff;
+    /* Fondo blanco para las tarjetas/secciones principales */
+    --border-color: #ddd;
+    /* Color de borde suave */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-dark: rgba(0, 0, 0, 0.2);
+}
+
+/* Selector de tipo: body */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Asegura que el footer se mantenga al final */
+}
+
+/* Selector de tipo: a (enlaces) */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Selector de tipo: header - Usando Flexbox para la estructura interna */
+header {
+    background-color: var(--header-footer-bg);
+    color: var(--light-text-color);
+    padding: 1rem 0;
+    text-align: center;
+    /* Centra el texto por defecto en móviles */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px var(--shadow-dark);
+
+    /* Flexbox para alinear título y navegación horizontalmente en desktop */
+    display: flex;
+    flex-direction: column;
+    /* Por defecto apilado en móviles */
+    align-items: center;
+    /* Centra horizontalmente el contenido del header */
+    justify-content: center;
+    /* Centra verticalmente si hay espacio extra */
+    gap: 15px;
+    /* Espacio entre el h1 y la nav */
+}
+
+/* Selector de tipo: h1 */
+header h1 {
+    margin-bottom: 0;
+    /* Ajustado para flexbox */
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#titulo {
+    font-family: "Rubik Dirt", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.9rem;
+    color: rgb(87, 252, 186);
+}
+
+/* Selector de tipo: nav - Usando Flexbox para los ítems de navegación */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /* Asegura que no haya márgenes externos */
+
+    /* Flexbox para los elementos de navegación */
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que los ítems se envuelvan en pantallas pequeñas */
+    justify-content: center;
+    /* Centra los ítems en el contenedor */
+    gap: 15px;
+    /* Espacio entre los ítems del menú */
+}
+
+/* Selector de hijos directos: nav > ul > li */
+nav>ul>li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    margin: 0;
+    /* Márgenes manejados por gap en ul */
+}
+
+/* Selector de pseudo-clase: nav > ul > li > a:hover */
+nav>ul>li>a {
+    color: var(--light-text-color);
+    font-weight: 700;
+    padding: 8px 12px;
+    /* Aumentado el padding para mejor área de clic */
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: block;
+    /* Asegura que el padding afecte toda la zona del enlace */
+    border-radius: 5px;
+    /* Bordes redondeados para los enlaces */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    /* Sutil sombra de texto */
+}
+
+/* PRIMERA TRANSFORMACIÓN: Desplaza hacia arriba los elementos del menú de navegación cuando el usuario pasa el cursor sobre ellos. */
+nav>ul>li>a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+    /* Transformación: traslación en hover */
+    background-color: rgba(255, 193, 7, 0.1);
+    /* Ligero fondo en hover */
+}
+
+/* Pseudo-elemento: nav > ul > li > a::after */
+nav>ul>li>a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--secondary-color);
+    transition: width 0.3s ease-in-out;
+    /* Transición para la línea inferior */
+    position: absolute;
+    bottom: 0;
+    /* Alineado al fondo del enlace */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav>ul>li>a:hover::after {
+    width: calc(100% - 24px);
+    /* Se ajusta al padding del enlace */
+}
+
+/* Selector de tipo: main - Usando Grid para la estructura principal del contenido */
+main {
+    flex: 1;
+    /* Para que el footer se mantenga abajo */
+    padding: 20px;
+    max-width: 1200px;
+    /* Ancho máximo para el contenido principal */
+    margin: 20px auto;
+    /* Centrar el contenido principal */
+    background-color: var(--card-bg-color);
+    /* Fondo blanco para el main */
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--shadow-light);
+
+    /* --- Implementación de CSS Grid para el Layout Principal --- */
+    display: grid;
+    /* grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr; */
+    grid-template-columns: 1fr;
+    /* Por defecto, una columna en móviles. */
+    gap: 30px;
+    /* Espacio entre las secciones/cards */
+    align-items: start;
+}
+
+/* Selector de tipo: section */
+section {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--card-bg-color);
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+/* Corrige el z-index para elementos interactivos dentro de las secciones */
+section>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* Selector de tipo: h2 */
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--secondary-color);
+    margin: 0.5rem auto 0;
+}
+
+/* Selector de tipo: h3 */
+h3 {
+    color: var(--tertiary-color);
+    margin-bottom: 0.8rem;
+    font-size: 1.6em;
+}
+
+/* Selector de tipo: p, ul, ol, table */
+p,
+ul,
+ol,
+table {
+    margin-bottom: 1rem;
+}
+
+/* Selector de clase: .card (ejemplo para envolver contenido) */
+.card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    /* margin-bottom: 1.5rem; Se puede remover si se usa Grid gap */
+    box-shadow: 0 4px 8px var(--shadow-light);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    /* Transformación: traslación en hover */
+    box-shadow: 0 6px 12px var(--shadow-medium);
+}
+
+/* Estilos para imágenes dentro de artículos */
+article img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px var(--shadow-light);
+    transition: transform 0.5s ease-in-out;
+    /* Transición para imágenes */
+}
+
+/* SEGUNDA TRANSFORMACIÓN: Agranda las imágenes dentro de los artículos cuando el usuario pasa el cursor sobre ellas. */
+article img:hover {
+    transform: scale(1.02);
+    /* Transformación: escala en hover */
+}
+
+/* Estilos para formularios (contacto.html) */
+form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--shadow-light);
+    display: flex;
+    /* Mantiene Flexbox para el formulario interno */
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--tertiary-color);
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.3s ease;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+form button {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Estilos para tablas (cronograma.html, entradas.html) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+table caption {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+table thead {
+    background-color: var(--tertiary-color);
+    color: var(--light-text-color);
+}
+
+table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+table tbody tr:hover {
+    background-color: #eef;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Estilos para listas ordenadas y no ordenadas */
+ol,
+ul {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+ol li strong {
+    color: var(--tertiary-color);
+}
+
+ul li {
+    list-style-type: disc;
+}
+
+ol li {
+    list-style-type: decimal;
+}
+
+/* Estilos para iframes (ubicacion.html) */
+iframe {
+    max-width: 100%;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+/* Estilos para audio (index.html) */
+audio {
+    width: 100%;
+    max-width: 400px;
+    /* Limita el ancho del reproductor de audio */
+    margin: 0.5rem auto;
+    /* Centra el reproductor de audio si es más pequeño que el contenedor */
+    display: block;
+    position: relative;
+    z-index: 10;
+    /* Asegurar que el reproductor esté sobre cualquier posible solapamiento */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Selector de tipo: footer */
+footer {
+    background-color: var(--header-footer-bg);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: var(--secondary-color);
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+/* Iconos de Font Awesome */
+.fa-house,
+.fa-music,
+.fa-clock,
+.fa-ticket,
+.fa-location-dot,
+.fa-address-book {
+    margin-right: 8px;
+    /* Espacio entre el icono y el texto en el nav */
+}
+
+
+
+/* Flexbox para .flex-container (Artistas y Audio en Index) */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.flex-item {
+    flex: 1 1 280px;
+    /* Permite 3 columnas en desktop, 2 en tablet, 1 en móvil */
+    max-width: 350px;
+    /* Limita el ancho máximo de un item */
+    box-sizing: border-box;
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--card-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-light);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    z-index: 5;
+    /* Aseguramos que el flex-item también tenga un z-index */
+
+    /* AÑADIDO: Asegurar que el contenido no se comprima demasiado */
+    min-width: 200px;
+    /* Asegura un ancho mínimo para la tarjeta */
+    display: flex;
+    /* Convierte el flex-item en un contenedor flex para su contenido */
+    flex-direction: column;
+    /* Apila el contenido (h4 y audio) verticalmente */
+    justify-content: space-between;
+    /* Distribuye el espacio entre los elementos */
+    align-items: center;
+    /* Centra horizontalmente el contenido */
+}
+
+.flex-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px var(--shadow-medium);
+}
+
+/* Selectores de clase y ID para personalización */
+#destacados {
+    background-color: rgba(255, 193, 7, 0.1);
+    /* Usando el valor RGB directo del --secondary-color */
+    border-left: 5px solid var(--secondary-color);
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+}
+
+/* Selector de hermano adyacente: h3 + ul */
+h3+ul {
+    margin-top: 0rem;
+    padding-left: 0rem;
+}
+
+/* Selector general de hermanos: h3 ~ p */
+h3~p {
+    margin-left: 0.5rem;
+    font-style: italic;
+}
+
+.rotate-on-hover {
+    transition: transform 0.25s ease-in-out;
+}
+
+/* TERCERA TRANSFORMACIÓN: Rota un elemento 3 grados cuando el usuario pasa el cursor sobre él. */
+.rotate-on-hover:hover {
+    transform: rotate(1.5deg);
+    /* Transformación: rotación (ajustado a 1.5deg para ser más sutil) */
+}
+
+.scale-on-hover {
+    transition: transform 0.4s ease-in-out;
+}
+
+.scale-on-hover:hover {
+    transform: scale(1.05);
+    /* Transformación: escala */
+}
+
+
+
+.alternar-menu {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--light-text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.input-error {
+    border-color: #ff4444 !important;
+    background-color: #fff0f0 !important;
+}
+
+
+
+#index-main-grid {
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr
+}
+
+#bienvenida {
+    grid-column-start: 1;
+    grid-column-end: 4
+}
+
+#destacados {
+    grid-column-start: 4;
+    grid-column-end: 7
+}
+
+#audios-representativos {
+    grid-column-start: 1;
+    grid-column-end: 7
+}
+
+
+
+#main-grid {
+    display: grid;
+    grid-template-columns: 3;
+    grid-template-rows: 6;
+}
+
+#como-llegar {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+#mapa-ubicacion {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 4;
+}
+
+#trailer-festival {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 6;
+}
+
+#redes-sociales {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+/* Media Queries para Responsividad con Flexbox y Grid */
+
+
+@media (max-width: 375px) and (min-whidth: 321px) {
+
+    #titulo {
+        font-family: "Rubik Dirt", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1.5rem;
+        color: rgb(87, 252, 186);
+        ;
+    }
+
+}
+
+@media (max-width: 425px) and (min-whidth: 376px) {
+
+    #titulo {
+        font-family: "Rubik Dirt", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 2rem;
+        color: rgb(87, 252, 186);
+        ;
+    }
+
+}
+
+/* Dispositivos móviles (ancho máximo 767px) */
+@media (max-width: 767px) {
+    header {
+        flex-direction: column;
+        /* Apila título y nav */
+        padding: 1rem 15px 0.4rem 0px;
+    }
+
+    #titulo {
+        font-family: "Rubik Dirt", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 2rem;
+        color: rgb(87, 252, 186);
+        ;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        /* Apila los ítems de navegación */
+        gap: 8px;
+        /* Espacio reducido entre ítems apilados */
+        width: 100%;
+        /* Asegura que la lista ocupe todo el ancho */
+    }
+
+    nav>ul>li {
+        width: 100%;
+        /* Cada ítem ocupa todo el ancho disponible */
+        margin: 0;
+        /* Sin margen externo adicional */
+    }
+
+    nav>ul>li>a {
+        padding: 10px;
+        text-align: center;
+        /* Centra el texto del enlace */
+        /* border: none; */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Borde sutil para cada botón */
+    }
+
+    nav>ul>li>a::after {
+        width: 0;
+        /* Oculta la línea inferior en móviles para ahorrar espacio */
+    }
+
+    main {
+        padding: 15px;
+        margin: 10px auto;
+        /* En móviles, el Grid ya es 1 columna por defecto, no es necesario cambiarlo */
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    .flex-item {
+        flex: 1 1 100%;
+        /* Una columna para las tarjetas de artistas/audio */
+        max-width: 100%;
+        /* Ocupa el ancho completo */
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+
+
+
+    /* Reglas para tablas responsivas en móvil */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    table tr {
+        border: 1px solid var(--border-color);
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 5px var(--shadow-light);
+        border-radius: 5px;
+        padding: 15px 10px;
+        /* Padding ajustado para tarjetas de tabla */
+    }
+
+    table td {
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    table td:last-child {
+        border-bottom: none;
+        /* No hay borde en la última celda */
+    }
+
+    table td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        content: attr(data-label);
+        /* Usa atributos de datos para etiquetas en móvil */
+        color: var(--tertiary-color);
+    }
+
+    .alternar-menu {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    #main-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    #como-llegar {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-bottom: 0rem;
+    }
+
+    #mapa-ubicacion {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-top: 13rem;
+        margin-bottom: 0rem;
+    }
+
+    #trailer-festival {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+
+    #redes-sociales {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-top: 37.5rem;
+    }
+
+    #index-main-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #bienvenida {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    #destacados {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    #audios-representativos {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}
+
+@media (max-width: 320px) {
+    #titulo {
+        font-family: "Rubik Dirt", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1.5rem;
+        color: rgb(87, 252, 186);
+        ;
+    }
+
+}
+
+/* Tablets (ancho entre 768px y 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    header {
+        width: 100%;
+        flex-direction: row;
+        /* Header en fila */
+        justify-content: space-between;
+        /* Espacio entre título y nav */
+        padding: 1rem 30px;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    nav ul {
+        gap: 15px;
+        /* Espacio entre ítems de nav */
+    }
+
+    main {
+        padding: 20px;
+        margin: 15px auto;
+        /* --- Grid para 2 columnas en Tablets --- */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        /* 2 columnas flexibles */
+        gap: 25px;
+        /* Ajusta el espacio para tabletas */
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .flex-item {
+        flex: 1 1 calc(50% - 25px);
+        /* Dos columnas para flex-items con el gap de 25px */
+        max-width: calc(50% - 25px);
+        /* Asegura que no se exceda el ancho en dos columnas */
+    }
+
+    /* Regla para que la sección de audio ocupe toda la fila en tablets */
+    #audio-representativo {
+        grid-column: 1 / -1;
+        /* Ocupa todas las columnas disponibles */
+    }
+
+    #main-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    #como-llegar {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-bottom: 0rem;
+    }
+
+    #mapa-ubicacion {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-top: 13rem;
+        margin-bottom: 0rem;
+    }
+
+    #trailer-festival {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+
+    #redes-sociales {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-top: 37.5rem;
+    }
+
+
+}
+
+/* PC de escritorio (ancho mínimo 1025px) */
+@media (min-width: 1025px) {
+    header {
+        padding: 1.5rem 50px;
+        flex-direction: row;
+        /* Header en fila */
+        justify-content: space-between;
+        /* Espacio entre título y nav */
+    }
+
+    header h1 {
+        font-size: 3rem;
+    }
+
+    nav>ul>li {
+        margin: 0;
+        /* Márgenes manejados por gap */
+    }
+
+    nav ul {
+        gap: 25px;
+        /* Espacio más grande entre ítems de nav en desktop */
+    }
+
+    main {
+        padding: 30px;
+        margin: 30px auto;
+        /* --- Grid para 2 o 3 columnas en Desktop --- */
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        /* Más columnas flexibles */
+        gap: 30px;
+        /* Espacio para desktop */
+    }
+
+    .flex-item {
+        flex: 1 1 calc(33.333% - 25px);
+        /* Tres columnas para flex-items con el gap de 25px */
+        max-width: calc(33.333% - 25px);
+        /* Asegura que no se exceda el ancho en tres columnas */
+    }
+
+    /* Regla para que la sección de audio ocupe toda la fila en desktop */
+    #audio-representativo {
+        grid-column: 1 / -1;
+        /* Ocupa todas las columnas disponibles */
+    }
+}

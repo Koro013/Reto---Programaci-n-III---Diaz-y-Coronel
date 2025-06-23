@@ -1,9 +1,14 @@
+<?php
+require_once "config.php";
+$stmt = $pdo->query("SELECT nombre, descripcion, imagen FROM artistas ORDER BY id");
+$artistas = $stmt->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sonidos de la Ciudad - Inicio</title>
+    <title>Sonidos de la Ciudad - Artistas</title>
     <link rel="icon" type="image/png" href="./images/guitarra.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
@@ -60,59 +65,17 @@
       </nav>
     </header>
 
-    <main
-      id="index-main-grid"
-    >
-      <section class="card" id="bienvenida">
-        <h2>Bienvenidos al Festival</h2>
-        <p>
-          Descubre la energía y diversidad de nuestro festival musical local.
-        </p>
-        <p><strong>Fecha:</strong> 20 - 22 de Agosto 2025</p>
-        <p><strong>Lugar:</strong> Parque Central de la Ciudad</p>
-        <p><a href="#destacados">Conoce a nuestros artistas destacados</a></p>
-      </section>
-
-      <section
-        class="scale-on-hover card"
-        id="destacados"
-      >
-        <h3>Artistas Destacados</h3>
-        <ul>
-          <li>Victor Navarro</li>
-          <li>Mavi Diaz y las Folkies</li>
-          <li>Marcelo Gomez</li>
-        </ul>
-      </section>
-
-      <section class="card" id="audios-representativos">
-        <h3>Audio Representativo</h3>
-        <p>Escucha fragmentos que capturan la esencia musical del festival:</p>
+    <main>
+      <section>
+        <h2>Conoce a los Artistas</h2>
         <div class="flex-container">
-          <article class="flex-item">
-            <h4>Victor Navarro</h4>
-            <audio controls>
-              <source src="./audio/Victor Navarro.mkv" type="audio/mpeg" />
-              Tu navegador no soporta audio.
-            </audio>
+<?php foreach ($artistas as $artista): ?>
+          <article class="card flex-item">
+            <h3><?php echo htmlspecialchars($artista['nombre']); ?></h3>
+            <p><?php echo nl2br(htmlspecialchars($artista['descripcion'])); ?></p>
+            <img src="<?php echo htmlspecialchars($artista['imagen']); ?>" alt="<?php echo htmlspecialchars($artista['nombre']); ?>" class="rotate-on-hover" />
           </article>
-          <article class="flex-item">
-            <h4>Mavi Díaz & Las Folkies</h4>
-            <audio controls>
-              <source
-                src="./audio/Mavi Díaz & Las Folkies.mkv"
-                type="audio/mpeg"
-              />
-              Tu navegador no soporta audio.
-            </audio>
-          </article>
-          <article class="flex-item">
-            <h4>Marcelo Gomez</h4>
-            <audio controls>
-              <source src="./audio/Marcelo Gomez.mkv" type="audio/mpeg" />
-              Tu navegador no soporta audio.
-            </audio>
-          </article>
+<?php endforeach; ?>
         </div>
       </section>
     </main>
@@ -120,7 +83,13 @@
     <footer>
       <p>© 2025 Sonidos de la Ciudad</p>
       <p>
-        Contacta a info:
+        Más contenido en
+        <a href="https://www.facebook.com/festivalchacarera" target="_blank"
+          >nuestra página de Facebook</a
+        >
+      </p>
+      <p>
+        ¿Dudas? Escríbenos a
         <a href="mailto:info@sonidosdelaciudad.com"
           >info@sonidosdelaciudad.com</a
         >
